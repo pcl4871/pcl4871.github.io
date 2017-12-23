@@ -1,0 +1,65 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戰報查詢</title>
+  <style>
+  body {
+    background-image: url("img/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+
+  }
+
+  #bg {
+    background:rgba(64, 64, 64,0.7);
+    color:white;
+    width: 198px;
+    height: 48px;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    margin: -24px 0 0 -99px;
+    border: 1px solid white;
+  }
+
+  #input {
+    margin-top: 7%;
+  }
+
+  #iframe {
+    background:rgba(64, 64, 64,0.7);
+    color:white;
+    width: 600px;
+    height: 256px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin: -128px 0 0 -300px;
+  }
+  </style>
+</head>
+
+<body>
+  <script>
+    function ReqDateRpt(){
+      var x = new Date(document.getElementById("date").value);
+      var t = x.getTime();
+      var d = x.getDay();
+      if (d!=0){
+        t=t+(7-d)*86400000;
+      }
+      var y = new Date(t);
+      document.getElementById("iframe").src="/evtc/" + String(y.getFullYear()) + "/" + String(y.getMonth()+1) + "/" + String(y.getDate()) + "/"
+    }
+  </script>
+  <div>
+    <div id="bg">
+      <div id="input"><center>
+        <input type="date" id="date" onchange="ReqDateRpt()">
+      </div>
+    </div>
+    <iframe src="" id="iframe"></iframe>
+  </div>
+</body>
