@@ -43,8 +43,7 @@
 
 <body>
   <script>
-    function ReqDateRpt(){
-      var x = new Date(document.getElementById("date").value);
+    function ReqDateRpt(x){
       var t = x.getTime();
       var d = x.getDay();
       if (d!=0){
@@ -57,7 +56,8 @@
   <div>
     <div id="bg">
       <div id="input"><center>
-        <input type="date" id="date" onchange="ReqDateRpt()">
+        <input type="date" id="date" onchange="ReqDateRpt(new Date(value))">
+        <button type="button" onclick="ReqDateRpt(new Date())">本週</button>
       </div>
     </div>
     <iframe src="" id="iframe" scrolling="no"></iframe>
