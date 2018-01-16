@@ -1,0 +1,141 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .block {
+    background:rgba(64, 64, 64,0.7);
+    color:white;
+    width: 148px;
+    height: 48px;
+    border: 1px solid gray;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .block-passed {
+    background:rgba(70, 210, 70,0.7);
+    color:white;
+    width: 148px;
+    height: 48px;
+    border: 1px solid gray;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .block-passed:hover {
+    background:rgba(70, 210, 70,0.9);
+  }
+
+  .block-passed-event {
+    background:rgba(70, 210, 70,0.7);
+    color:white;
+    width: 148px;
+    height: 48px;
+    border: 1px solid gray;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .block-failed {
+    background:rgba(153, 31, 0,0.7);
+    color:white;
+    width: 148px;
+    height: 48px;
+    border: 1px solid gray;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  section {
+    display: table;
+  }
+
+</style>
+<script>
+function Raid(){
+  var wing = {
+    stageName:[
+    ["vg",    "sw", "gor", "sab" ],
+    ["sloth", "pc", "matt","na"  ],
+    ["sts",   "kc", "tc",  "xera"],
+    ["cairn", "mo", "sam", "dei" ],
+    ["sh",    "ros","sog", "vitv"]
+    ],
+    stageProgess:[ //0=沒打 1=有打有過 2=有打沒過
+    [0,0,0,0], //Wing 1
+    [1,1,0,0], //Wing 2
+    [0,0,0,0], //Wing 3
+    [1,1,1,1], //Wing 4
+    [0,0,0,0]  //Wing 5
+    ],
+    stageEvent:[
+      "sw","pc","na","sts","tc","ros","sog"
+    ]};
+  for (var i=0;i<5;i++){
+    for (var j=0;j<4;j++){
+      var x=document.getElementById(wing.stageName[i][j]);
+      if (wing.stageProgess[i][j]==0) {
+        x.className="block";
+        x.onclick="";
+      }
+      if (wing.stageProgess[i][j]==1) {
+        x.className="block-passed";
+        for (var k=0;k<wing.stageEvent.length;k++) {
+            if (x.id==wing.stageEvent[k]) x.className="block-passed-event";
+        }
+      }
+      if (wing.stageProgess[i][j]==2) {
+        x.className="block-failed";
+        x.onclick="";
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body link="#ffffff" vlink="#cccccc" alink="#80bfff" onload="Raid()">
+  <section>
+    <div class="block" id="vg" onclick="window.open('vg.html', '_blank');">Vale Guradian</div>
+    <div class="block" id="sw">Spirit Woods</div>
+    <div class="block" id="gor" onclick="window.open('grose.html', '_blank');">Gorseval</div>
+    <div class="block" id="sab" onclick="window.open('sab.html', '_blank');">Sabetha</div>
+  </section>
+
+  <section>
+    <div class="block" id="sloth" onclick="window.open('sloth.html', '_blank');">Slothasor</div>
+    <div class="block" id="pc">Prison Camp</div>
+    <div class="block" id="matt" onclick="window.open('matt.html', '_blank');">Matthias</div>
+    <div class="block" id="na"></div>
+  </section>
+
+  <section>
+    <div class="block" id="sts">Siege the Stronghold</div>
+    <div class="block" id="kc" onclick="window.open('kc.html', '_blank');">Keep Construct</div>
+    <div class="block" id="tc">Twisted Castle</div>
+    <div class="block" id="xera" onclick="window.open('xera.html', '_blank');">Xera</div>
+  </section>
+
+  <section>
+    <div class="block" id="cairn" onclick="window.open('cairn.html', '_blank');">Cairn</div>
+    <div class="block" id="mo" onclick="window.open('mo.html', '_blank');">Mursaat Overseer</div>
+    <div class="block" id="sam" onclick="window.open('sam.html', '_blank');">Samarog</div>
+    <div class="block" id="dei" onclick="window.open('dei.html', '_blank');">Deimos</div>
+  </section>
+
+  <section>
+    <div class="block" id="sh" onclick="window.open('sh.html', '_blank');">Soulless Horror</div>
+    <div class="block" id="ros">River of Souls</div>
+    <div class="block" id="sog">Statues of Grenth</div>
+    <div class="block" id="vitv" onclick="window.open('dhuum.html', '_blank');">Dhuum</div>
+  </section>
+</body>
